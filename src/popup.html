@@ -8,41 +8,102 @@
       width: 280px;
       padding: 10px;
       font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
     }
     h1 {
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
       margin-bottom: 10px;
+      color: #333;
     }
     p {
       font-size: 14px;
       line-height: 1.4;
+      color: #555;
     }
     .form-group {
       margin-bottom: 15px;
+      position: relative;
     }
     label {
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
       font-size: 14px;
+      color: #444;
     }
-    input[type="text"] {
+    input[type="text"], input[type="number"] {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    input[type="text"]:focus, input[type="number"]:focus {
+      border-color: #4285f4;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+    }
+    /* 美化数字输入框 */
+    .number-input-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .number-input-container input[type="number"] {
+      -moz-appearance: textfield; /* Firefox */
+    }
+    .number-input-container input[type="number"]::-webkit-inner-spin-button,
+    .number-input-container input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .number-controls {
+      position: absolute;
+      right: 8px;
+      display: flex;
+      flex-direction: column;
+      height: 70%;
+    }
+    .number-control-btn {
+      background: none;
+      border: none;
+      color: #666;
+      font-size: 12px;
+      cursor: pointer;
+      padding: 0;
+      width: 20px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .number-control-btn:hover {
+      color: #4285f4;
+    }
+    .current-value {
+      position: absolute;
+      right: 35px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      font-size: 12px;
     }
     button {
       background-color: #4285f4;
       color: white;
       border: none;
-      padding: 8px 12px;
-      border-radius: 4px;
+      padding: 10px 12px;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
       width: 100%;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     button:hover {
       background-color: #3367d6;
@@ -53,6 +114,14 @@
       color: #4caf50;
       text-align: center;
       height: 15px;
+      transition: all 0.3s ease;
+    }
+    a {
+      color: #4285f4;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -63,6 +132,18 @@
   <div class="form-group">
     <label for="emailDomain">邮箱后缀:</label>
     <input type="text" id="emailDomain" placeholder="例如: kaoshen.store">
+  </div>
+
+  <div class="form-group">
+    <label for="randomLength">随机字符串位数:</label>
+    <div class="number-input-container">
+      <input type="number" id="randomLength" min="1" max="32" placeholder="默认: 12">
+      <span class="current-value" id="currentValue"></span>
+      <div class="number-controls">
+        <button type="button" class="number-control-btn" id="increaseBtn">▲</button>
+        <button type="button" class="number-control-btn" id="decreaseBtn">▼</button>
+      </div>
+    </div>
   </div>
 
   <button id="saveButton">保存设置</button>

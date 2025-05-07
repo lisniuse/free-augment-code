@@ -81,14 +81,19 @@ function generateRandomEmail() {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let result = '';
   const charactersLength = characters.length;
-  for (let i = 0; i < 8; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
 
-  // 从存储中获取邮箱后缀，如果没有则使用默认值
+  // 从存储中获取邮箱后缀和随机字符串位数，如果没有则使用默认值
   return new Promise((resolve) => {
-    chrome.storage.sync.get(['emailDomain'], function(data) {
+    chrome.storage.sync.get(['emailDomain', 'randomLength'], function(data) {
       const domain = data.emailDomain || 'kaoshen.store';
+      // 使用设置的位数，默认为12位
+      const length = data.randomLength ? parseInt(data.randomLength) : 12;
+
+      // 生成随机字符串
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+
       resolve(result + '@' + domain);
     });
   });

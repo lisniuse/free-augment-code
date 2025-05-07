@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Augment续杯</title>
+  <style>
+    body {
+      width: 280px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #3367d6;
+    }
+    .status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #4caf50;
+      text-align: center;
+      height: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Augment续杯</h1>
+  <p>在Augment登录页面添加续杯功能，自动生成随机邮箱并填入表单。</p>
+
+  <div class="form-group">
+    <label for="emailDomain">邮箱后缀:</label>
+    <input type="text" id="emailDomain" placeholder="例如: kaoshen.store">
+  </div>
+
+  <button id="saveButton">保存设置</button>
+  <div class="status" id="statusMessage"></div>
+
+  <p>请访问 <a href="https://login.augmentcode.com/u/login/identifier" target="_blank">Augment登录页面</a> 使用此功能。</p>
+  <script src="popup.js"></script>
+</body>
+</html>

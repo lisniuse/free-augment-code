@@ -1,0 +1,21 @@
+{
+  "name": "augment-refill",
+  "version": "1.0.0",
+  "description": "Augment续杯 - 在Augment登录页面添加续杯功能的Chrome扩展",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "chrome-extension",
+    "augment"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "archiver": "^5.3.1",
+    "fs-extra": "^11.1.1",
+    "rimraf": "^5.0.1"
+  }
+}

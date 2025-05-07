@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Augment续杯",
+  "version": "1.0",
+  "description": "在Augment登录页面添加续杯功能",
+  "icons": {
+    "48": "icon.ico",
+    "128": "icon.ico"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.ico"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://login.augmentcode.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

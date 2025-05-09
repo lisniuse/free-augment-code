@@ -24,9 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
   chrome.storage.sync.get(['emailDomain', 'randomLength'], function(result) {
     if (result.emailDomain) {
       emailDomainInput.value = result.emailDomain;
-    } else {
-      // 默认值
-      emailDomainInput.value = 'kaoshen.store';
     }
 
     // 设置随机字符串位数
@@ -72,6 +69,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // 验证邮箱后缀输入是否为空
     if (!domain) {
       statusMessage.textContent = '请输入有效的邮箱后缀';
+      statusMessage.style.color = '#f44336';
+      return;
+    }
+
+    // 验证邮箱后缀格式
+    if (domain.includes('@') || !domain.includes('.')) {
+      statusMessage.textContent = '请输入正确的域名格式，如 example.com';
       statusMessage.style.color = '#f44336';
       return;
     }

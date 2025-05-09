@@ -83,9 +83,17 @@ function generateRandomEmail() {
   const charactersLength = characters.length;
 
   // 从存储中获取邮箱后缀和随机字符串位数，如果没有则使用默认值
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     chrome.storage.sync.get(['emailDomain', 'randomLength'], function(data) {
-      const domain = data.emailDomain || 'kaoshen.store';
+      // 检查是否设置了邮箱后缀
+      if (!data.emailDomain) {
+        // 如果没有设置邮箱后缀，则提示用户
+        alert('请先在扩展设置中设置邮箱后缀！');
+        reject(new Error('未设置邮箱后缀'));
+        return;
+      }
+
+      const domain = data.emailDomain;
       // 使用设置的位数，默认为12位
       const length = data.randomLength ? parseInt(data.randomLength) : 12;
 

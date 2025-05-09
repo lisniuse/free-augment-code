@@ -57,7 +57,7 @@ npm run build
 ## 使用方法
 
 1. 安装扩展后，点击扩展图标，**必须设置您自己的邮箱后缀**（如 example.com）和随机字符串位数（默认为12位）
-2. 访问 [Augment登录页面](https://login.augmentcode.com/u/login/identifier)
+2. 访问 [Augment登录页面](https://login.augmentcode.com/)
 3. 在登录页面上，您将看到原始"Continue"按钮下方出现一个"续杯"按钮
 4. 点击"续杯"按钮，它将自动生成随机邮箱并填入表单，然后自动点击继续按钮
 

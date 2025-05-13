@@ -62,14 +62,14 @@ function handleRefill() {
       const inputEvent = new Event('input', { bubbles: true });
       emailInput.dispatchEvent(inputEvent);
 
-      // 自动点击原始按钮
+      // 自动点击原始按钮，延迟1秒以确保表单验证有足够时间处理
       setTimeout(() => {
         const originalButton = document.querySelector('button[name="action"][value="default"]');
         if (originalButton) {
           originalButton.click();
           console.log('Augment续杯: 自动点击继续按钮');
         }
-      }, 500);
+      }, 1000);
     }
   }).catch(error => {
     console.error('Augment续杯: 生成邮箱时出错', error);
